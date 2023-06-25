@@ -10,8 +10,18 @@ let umetnina3 = new Umetnina("Umetnina3", umetnik3, "slika", 3000, 30, "slike/ar
 let ponuda1 = new Ponuda(umetnina1, 1100, "Kupac1");
 let ponuda2 = new Ponuda(umetnina2, 2100, "Kupac1");
 let ponuda3 = new Ponuda(umetnina3, 3100, "Kupac1");
-lang = "eng";
+lang = "srp";
 ponuda1.dodajPonuduNaId("div1", lang);
 ponuda2.dodajPonuduNaId("div2", lang);
 ponuda3.dodajPonuduNaId("div3", lang);
 });
+
+
+function MeniZaMaliEkran() {
+    var x = document.getElementById("navDemo");
+    if (x.className.indexOf("w3-show") == -1) {
+      x.className += " w3-show";
+    } else { 
+      x.className = x.className.replace(" w3-show", "");
+    }
+  }
