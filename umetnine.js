@@ -10,7 +10,6 @@ let umetnik7 = new Umetnik("Umetnik7 ime", "Umetnik7 prezime", new Tekst("biogra
 
 lang = "eng";
 
-
 let umetnina1 = new Umetnina("Umetnina1", umetnik1, "slika", 1000, 10, "slike/art1.jpg");
 let umetnina2 = new Umetnina("Umetnina2", umetnik2, "slika", 2000, 20, "slike/art4.jpg");
 let umetnina3 = new Umetnina("Umetnina3", umetnik3, "slika", 3000, 30, "slike/art3.jpg");
