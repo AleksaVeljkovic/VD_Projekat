@@ -15,13 +15,3 @@ ponuda1.dodajPonuduNaId("div1", lang);
 ponuda2.dodajPonuduNaId("div2", lang);
 ponuda3.dodajPonuduNaId("div3", lang);
 });
-
-
-function MeniZaMaliEkran() {
-    var x = document.getElementById("navDemo");
-    if (x.className.indexOf("w3-show") == -1) {
-      x.className += " w3-show";
-    } else { 
-      x.className = x.className.replace(" w3-show", "");
-    }
-  }

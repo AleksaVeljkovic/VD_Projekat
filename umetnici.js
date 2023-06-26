@@ -8,13 +8,11 @@ let umetnik5 = new Umetnik("Umetnik5 ime", "Umetnik5 prezime", new Tekst("biogra
 let umetnik6 = new Umetnik("Umetnik6 ime", "Umetnik6 prezime", new Tekst("biografija srpski", "biography english"), "slike/umetnik6.jpg", "lokacija pdf-a");
 let umetnik7 = new Umetnik("Umetnik7 ime", "Umetnik7 prezime", new Tekst("biografija srpski", "biography english"), "slike/umetnik7.jpg", "lokacija pdf-a");
 
-lang = "eng";
+lang = "srp";
 umetnik1.dodajUmetnikaNaId("div1", lang);
 umetnik2.dodajUmetnikaNaId("div1", lang);
 umetnik3.dodajUmetnikaNaId("div1", lang);
-umetnik4.dodajUmetnikaNaId("div2", lang);
-umetnik5.dodajUmetnikaNaId("div2", lang);
-umetnik6.dodajUmetnikaNaId("div3", lang);
-umetnik7.dodajUmetnikaNaId("div3", lang);
+umetnik4.dodajUmetnikaNaId("div1", lang);
+umetnik5.dodajUmetnikaNaId("div1", lang);
 
 });

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Very Art Gallery - Pocetna</title>
+<title>Very Art Gallery -O nama</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -12,9 +12,22 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
 <script src="klase.js"></script>
 <script src="home.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap" async defer></script>
 <style>
 body {font-family: "Lato", sans-serif}
 .mySlides {display: none}
+.google-map {
+     padding-bottom: 50%;
+     position: relative;
+}
+
+.google-map iframe {
+     height: 100%;
+     width: 100%;
+     left: 0;
+     top: 0;
+     position: absolute;
+}
 </style>
 </head>
 <body>
@@ -43,19 +56,48 @@ body {font-family: "Lato", sans-serif}
 </div>
 
 <div class="w3-content" style="max-width:2000px;margin-top:40px">
+
     <div class="w3-container w3-content w3-center w3-padding-64" style="max-width:1100px">
-        <div class="w3-row w3-padding-64 w3-large" style="font-weight: bold;">
+        <div style="font-weight: bold; font-size:x-large;">O nama</div>
+        <div class="w3-row w3-padding-32">
+            <div class="w3-third">
+                <img src="slike/galerija_slika1.jpg" alt="nista"  style="width:100%; height: 300px; border: 7px solid;">
+            </div>
+            <div class="w3-third">
+                <img src="slike/galerija_slika3.jpg" alt="nista"  style="width:100%; height: 300px; border: 7px solid; margin-left: 3px;">
+            </div>
+            <div class="w3-third" >
+                <img src="slike/galerija_slika4.jpg" alt="nista" style="width:100%; height: 300px; border: 7px solid; margin-left: 6px;">
+            </div>
+        </div>
+        <div class="w3-row w3-large" style="font-weight: bold; padding: 20px;">
             U nasoj galeriji se ponosno predstavlja raznovrsnost umetničkih dela. 
             Bez obzira na preferencije posetilaca, nasa galerija pruža širok spektar umetnosti koja zadovoljava različite ukuse i interese. 
-            Naša stalna izložba obuhvata različite stilove, epohe i tehnike umetnosti, pružajući bogato iskustvo posetiocima.<br>
+            Naša stalna izložba obuhvata različite stilove, epohe i tehnike umetnosti, pružajući bogato iskustvo posetiocima.
             U galeriji koju vodimo, posvećujemo pažnju visokom kvalitetu umetničkih dela. 
             Naš tim stručnjaka pažljivo bira i procenjuje svako izloženo umetničko delo.
-            Galerija koju vodimo aktivno sarađuje sa umetnicima iz različitih delova sveta.<br>
+            Galerija koju vodimo aktivno sarađuje sa umetnicima iz različitih delova sveta.
             Organizujemo izložbe i rezidencijalne programe koji omogućavaju umetnicima da stvaraju i izlažu svoja dela u našem prostoru. 
             Ova saradnja pruža jedinstvene perspektive i sveže ideje koje obogaćuju našu kolekciju i iskustvo posetilaca.
         </div>
+        <div class="w3-row w3-padding-32 w3-large" style="font-weight: bold;">
+            Naš web sajt je sa ponosom osvojio prestižne nagrade CSS Design Awards i D&AD Awards, što je priznanje za izuzetnost u dizajnu i kreativnosti.
+            Ovi uspesi u osvajanju nagrada potvrđuju našu stručnost, kreativnost i predanost u dizajnu web sajtova. 
+            Timski rad, istraživanje i konstantno usavršavanje omogućili su nam da se izdvojimo među konkurencijom. 
+            Osvojene nagrade su inspiracija za dalji napredak i podsticaj za kreiranje još boljih digitalnih iskustava za naše posetioce. 
+            Nastavićemo da težimo izvrsnosti u dizajnu i nastavljamo da stvaramo inovativne i inspirativne web sajtove.
+        </div>
+        <div class="w3-row" style="font-weight: bold; padding: auto;">Kontakt telefon : 011/123-456 &emsp;&emsp;&emsp; nasa adresa : Durmitorska 19</div>
+
+        <div class="w3-row w3-large">
+            <div class="google-map">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2831.0262829307!2d20.4535214!3d44.80065299999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x475a700424561d6b%3A0xe54ab241950eb988!2z0JTRg9GA0LzQuNGC0L7RgNGB0LrQsCAxOSwg0JHQtdC-0LPRgNCw0LQgMTEyMDA2!5e0!3m2!1ssr!2srs!4v1687816411478!5m2!1ssr!2srs"
+             width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
     </div>
 </div>
+
 
 <footer class="w3-container w3-padding-10 w3-center w3-black w3-large" style="padding: 5px;">
     Copyright 2023, Aleksa Veljkovic 2020/0562, Marko Rabat 2020/0196, Odsek za softversko inzenjerstvo Elektrotehnickog fakulteta Univerziteta u Beogradu

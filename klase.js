@@ -33,16 +33,20 @@ class Umetnik {
             `;
         else if (lang == "srp")
             htmlContent = `
-                <div class="card">
-                <img src="${this.lokacijaSlikeUmetnika}" class="card-img-top w3-round w3-margin-bottom"
-                style="width:100%; height: 300px; border: 7px solid;">
-
-                <div class="card-body">
-                    <h5 class="card-title">${this.ime} ${this.prezime}</h5>
-                    <p class="card-text">Biografija: ${this.biografija.tekstEngleski}
-                    <!--<a href="#" class="btn btn-primary">Go somewhere</a>-->
-                </div>
-
+                <div class="card" style="width: 800px; margin-left:70px">
+                    <div class="row g-0">
+                        <div class="col-md-4">
+                            <img src="${this.lokacijaSlikeUmetnika}" class="img-top w3-round w3-margin-bottom"
+                            style="width:100%; height: 300px; border: 7px solid;">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h5 class="card-title">${this.ime} ${this.prezime}</h5>
+                                <p class="card-text">Biografija: ${this.biografija.tekstEngleski}
+                                <!--<a href="#" class="btn btn-primary">Go somewhere</a>-->
+                            </div>
+                        </div>
+                    </div>
                 </div>
             `;
         else throw "language must be srp or eng";
@@ -159,3 +163,14 @@ class Ponuda {
         return "" + this.umetnina + " " + this.novcanaVrednostPonude + " " + this.autorPonude;
     }
 }
+
+
+
+function MeniZaMaliEkran() {
+    var x = document.getElementById("navDemo");
+    if (x.className.indexOf("w3-show") == -1) {
+      x.className += " w3-show";
+    } else { 
+      x.className = x.className.replace(" w3-show", "");
+    }
+  }
