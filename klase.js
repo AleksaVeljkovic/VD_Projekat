@@ -33,16 +33,16 @@ class Umetnik {
             `;
         else if (lang == "srp")
             htmlContent = `
-                <div class="card" style="width: 800px; margin-left:70px">
+                <div class="card" style="width: 700px; margin-left:70px; margin-bottom:50px;">
                     <div class="row g-0">
                         <div class="col-md-4">
-                            <img src="${this.lokacijaSlikeUmetnika}" class="img-top w3-round w3-margin-bottom"
+                            <img src="${this.lokacijaSlikeUmetnika}" class="img-fluid w3-round"
                             style="width:100%; height: 300px; border: 7px solid;">
                         </div>
                         <div class="col-md-8">
                             <div class="card-body">
                                 <h5 class="card-title">${this.ime} ${this.prezime}</h5>
-                                <p class="card-text">Biografija: ${this.biografija.tekstEngleski}
+                                <p class="card-text">Biografija: ${this.biografija.tekstSrpski}
                                 <!--<a href="#" class="btn btn-primary">Go somewhere</a>-->
                             </div>
                         </div>
@@ -93,19 +93,23 @@ class Umetnina {
             `;
         else if (lang == "srp")
             htmlContent = `
-                <div class="card">
-                <img src="${this.lokacijaSlikeUmetnine}" class="card-img-top w3-round w3-margin-bottom"
-                style="width:100%; height: 300px; border: 7px solid;">
-
-                <div class="card-body">
-                    <h5 class="card-title">${this.nazivUmetnine}</h5>
-                    <p class="card-text">Biografija: ${this.autor.biografija.tekstSrpski}
-                    <br/>Procenjena vrednost: ${this.vrednost}
-                    <br/>Starost: ${this.startosUmetnine}
-                    <br/>Autor: ${this.autor.ime} ${this.autor.prezime}</p>
-                    <!--<a href="#" class="btn btn-primary">Go somewhere</a>-->
-                </div>
-
+                <div class="card" style="width: 700px; margin-left:70px; margin-bottom:50px">
+                    <div class="row g-0">
+                        <div class="col-md-4">
+                            <img src="${this.lokacijaSlikeUmetnine}" class="img-fluid w3-round"
+                            style="width:100%; height: 300px; border: 7px solid;">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h5 class="card-title">${this.nazivUmetnine}</h5>
+                                <p class="card-text">Biografija: ${this.autor.biografija.tekstSrpski}
+                                <br/>Procenjena vrednost: ${this.vrednost}
+                                <br/>Starost: ${this.startosUmetnine}
+                                <br/>Autor: ${this.autor.ime} ${this.autor.prezime}</p>
+                                <!--<a href="#" class="btn btn-primary">Go somewhere</a>-->
+                            </div>
+                        </div>
+                    </div>
                 </div>
             `;
         else throw "language must be srp or eng";
@@ -163,7 +167,6 @@ class Ponuda {
         return "" + this.umetnina + " " + this.novcanaVrednostPonude + " " + this.autorPonude;
     }
 }
-
 
 
 function MeniZaMaliEkran() {
