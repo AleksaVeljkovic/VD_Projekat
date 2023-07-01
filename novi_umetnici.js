@@ -20,7 +20,7 @@ function prikaziNoviUmetniciStranicu(lang) {
                           "Copyright 2023, Aleksa Veljkovic 2020/0562, Marko Rabat 2020/0196, Department of Software School of Electrical Engineering University of Belgrade");
     $("#footterr")[0].innerHTML = futer.dohvTekst(lang);
 
-
+    $("#naslov")[0].innerHTML = new Tekst("Novi umetnici u galeriji", "New artists in the gallery").dohvTekst(lang);
     // sadrzaj stranice:
     $("#div1")[0].innerHTML = ""; umetnik1.dodajUmetnikaNaId("div1", lang);
     $("#div2")[0].innerHTML = ""; umetnik2.dodajUmetnikaNaId("div1", lang);

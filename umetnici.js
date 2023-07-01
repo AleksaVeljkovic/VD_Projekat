@@ -40,6 +40,7 @@ function prikaziStranicuUmetnici(lang) {
     umetnik6.dodajUmetnikaNaId("div2", lang);
     umetnik7.dodajUmetnikaNaId("div2", lang);
     umetnik8.dodajUmetnikaNaId("div2", lang);
+    $("#naslov")[0].innerHTML = new Tekst("Umetnici", "Artists").dohvTekst(lang);
 
 }
 

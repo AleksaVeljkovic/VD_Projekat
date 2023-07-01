@@ -31,7 +31,7 @@ class Umetnik {
                         <div class="col-md-8">
                             <div class="card-body">
                                 <h5 class="card-title">${this.ime} ${this.prezime}</h5>
-                                <p class="card-text">Biografija: ${this.biografija.tekstEngleski}
+                                <p class="card-text">Biography: ${this.biografija.tekstEngleski}
                                 <!--<a href="#" class="btn btn-primary">Go somewhere</a>-->
                             </div>
                         </div>
@@ -93,7 +93,7 @@ class Umetnina {
                         <div class="col-md-8">
                             <div class="card-body">
                                 <h5 class="card-title">${this.nazivUmetnine.tekstEngleski}</h5>
-                                <p class="card-text">Biografija: ${this.autor.biografija.tekstEngleski}
+                                <p class="card-text">Biography: ${this.autor.biografija.tekstEngleski}
                                 <br/>Estimated value: ${this.vrednost} RSD
                                 <br/>Age: ${this.startosUmetnine} years
                                 <br/>Autor: ${this.autor.ime} ${this.autor.prezime}</p>
