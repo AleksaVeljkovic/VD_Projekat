@@ -3,6 +3,9 @@ class Tekst {
         this.tekstSrpski = tekstSrpski;
         this.tekstEngleski = tekstEngleski;
     }
+    dohvTekstSrpski() { return this.tekstSrpski; }
+    dohvTekstEngleski() { return this.tekstEngleski; }
+    dohvTekst(lang) { return (lang == "srp") ? this.tekstSrpski : this.tekstEngleski; }
 }
 
 class Umetnik {
@@ -19,17 +22,22 @@ class Umetnik {
         let htmlContent = null;
         if (lang == "eng")
             htmlContent = `
-                <div class="card">
-                <img src="${this.lokacijaSlikeUmetnika}" class="card-img-top w3-round w3-margin-bottom"
-                style="width:100%; height: 300px; border: 7px solid;">
-
-                <div class="card-body">
-                    <h5 class="card-title">${this.ime} ${this.prezime}</h5>
-                    <p class="card-text">Biography: ${this.biografija.tekstEngleski}
-                    <!--<a href="#" class="btn btn-primary">Go somewhere</a>-->
+                <div class="card" style="width: 700px; margin-left:70px; margin-bottom:50px;">
+                    <div class="row g-0">
+                        <div class="col-md-4">
+                            <img src="${this.lokacijaSlikeUmetnika}" class="img-fluid w3-round"
+                            style="width:100%; height: 300px; border: 7px solid;">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h5 class="card-title">${this.ime} ${this.prezime}</h5>
+                                <p class="card-text">Biografija: ${this.biografija.tekstEngleski}
+                                <!--<a href="#" class="btn btn-primary">Go somewhere</a>-->
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
-                </div>
             `;
         else if (lang == "srp")
             htmlContent = `
@@ -76,19 +84,23 @@ class Umetnina {
         let htmlContent = null;
         if (lang == "eng")
             htmlContent = `
-                <div class="card">
-                <img src="${this.lokacijaSlikeUmetnine}" class="card-img-top w3-round w3-margin-bottom"
-                style="width:100%; height: 300px; border: 7px solid;">
-
-                <div class="card-body">
-                    <h5 class="card-title">${this.nazivUmetnine}</h5>
-                    <p class="card-text">Biography: ${this.autor.biografija.tekstEngleski}
-                    <br/>Estimated value: ${this.vrednost}
-                    <br/>Age: ${this.startosUmetnine}
-                    <br/>Author: ${this.autor.ime} ${this.autor.prezime}</p>
-                    <!--<a href="#" class="btn btn-primary">Go somewhere</a>-->
-                </div>
-
+                <div class="card" style="width: 700px; margin-left:70px; margin-bottom:50px">
+                    <div class="row g-0">
+                        <div class="col-md-4">
+                            <img src="${this.lokacijaSlikeUmetnine}" class="img-fluid w3-round"
+                            style="width:100%; height: 300px; border: 7px solid;">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h5 class="card-title">${this.nazivUmetnine.tekstEngleski}</h5>
+                                <p class="card-text">Biografija: ${this.autor.biografija.tekstEngleski}
+                                <br/>Estimated value: ${this.vrednost} RSD
+                                <br/>Age: ${this.startosUmetnine} years
+                                <br/>Autor: ${this.autor.ime} ${this.autor.prezime}</p>
+                                <!--<a href="#" class="btn btn-primary">Go somewhere</a>-->
+                            </div>
+                        </div>
+                    </div>
                 </div>
             `;
         else if (lang == "srp")
@@ -101,10 +113,10 @@ class Umetnina {
                         </div>
                         <div class="col-md-8">
                             <div class="card-body">
-                                <h5 class="card-title">${this.nazivUmetnine}</h5>
+                                <h5 class="card-title">${this.nazivUmetnine.tekstSrpski}</h5>
                                 <p class="card-text">Biografija: ${this.autor.biografija.tekstSrpski}
-                                <br/>Procenjena vrednost: ${this.vrednost}
-                                <br/>Starost: ${this.startosUmetnine}
+                                <br/>Procenjena vrednost: ${this.vrednost} RSD
+                                <br/>Starost: ${this.startosUmetnine} godina
                                 <br/>Autor: ${this.autor.ime} ${this.autor.prezime}</p>
                                 <!--<a href="#" class="btn btn-primary">Go somewhere</a>-->
                             </div>
@@ -138,7 +150,7 @@ class Ponuda {
             style="width:100%; height: 300px; border: 7px solid;">
 
             <div class="card-body">
-                <h5 class="card-title">${this.umetnina.nazivUmetnine}</h5>
+                <h5 class="card-title">${this.umetnina.nazivUmetnine.tekstEngleski}</h5>
                 <p class="card-text">Bid: ${this.novcanaVrednostPonude}RSD<br/>Bid made by: ${this.autorPonude}</p>
                 <!--<a href="#" class="btn btn-primary">Go somewhere</a>-->
             </div>
@@ -152,7 +164,7 @@ class Ponuda {
             style="width:100%; height: 300px; border: 7px solid;">
 
             <div class="card-body">
-                <h5 class="card-title">${this.umetnina.nazivUmetnine}</h5>
+                <h5 class="card-title">${this.umetnina.nazivUmetnine.tekstSrpski}</h5>
                 <p class="card-text">Ponuda: ${this.novcanaVrednostPonude}RSD<br/>Ponudu postavio: ${this.autorPonude}</p>
                 <!--<a href="#" class="btn btn-primary">Go somewhere</a>-->
             </div>

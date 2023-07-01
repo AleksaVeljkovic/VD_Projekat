@@ -11,7 +11,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
 <script src="klase.js"></script>
-<script src="home.js"></script>
+<script src="o_name.js"></script>
 <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap" async defer></script>
 <style>
 body {font-family: "Lato", sans-serif}
@@ -37,28 +37,32 @@ body {font-family: "Lato", sans-serif}
   <div class="w3-bar w3-black w3-card">
     <a class="w3-bar-item w3-button w3-padding-large w3-hide-medium w3-hide-large w3-right" href="javascript:void(0)" onclick="MeniZaMaliEkran()"><i class="fa fa-bars"></i></a>
     <img src = "slike/logo.jpg" style="width: 150px; height: auto; padding: 0;" class="w3-bar-item">
-    <a href="index.html" class="w3-bar-item w3-button w3-hide-small" style="margin-top: 15px;">Pocetna</a>
-    <a href="umetnine.html" class="w3-bar-item w3-button w3-hide-small" style="margin-top: 15px;">Umetnine</a>
-    <a href="umetnici.html" class="w3-bar-item w3-button w3-hide-small" style="margin-top: 15px;">Umetnici</a>
-    <a href="moj_nalog.html" class="w3-bar-item w3-button w3-hide-small" style="margin-top: 15px;">Moj nalog</a>
-    <a href="o_nama.html" class="w3-bar-item w3-button w3-hide-small" style="margin-top: 15px;">O nama</a>
+    <a href="index.html" class="w3-bar-item w3-button w3-hide-small" style="margin-top: 15px;" id="meni1">Pocetna</a>
+    <a href="umetnine.html" class="w3-bar-item w3-button w3-hide-small" style="margin-top: 15px;" id="meni2">Umetnine</a>
+    <a href="umetnici.html" class="w3-bar-item w3-button w3-hide-small" style="margin-top: 15px;" id="meni3">Umetnici</a>
+    <a href="moj_nalog.html" class="w3-bar-item w3-button w3-hide-small" style="margin-top: 15px;" id="meni4">Moj nalog</a>
+    <a href="o_nama.html" class="w3-bar-item w3-button w3-hide-small" style="margin-top: 15px;" id="meni5">O nama</a>
+    <img id="srpski" src="slike/zastavaSrbije.jpg" class="w3-round w3-margin-bottom w3-button img-fluid" style="width:87px; height:51px; margin-top:10px;">
+    <img id="engleski" src="slike/zastavaEngleske.png" class="w3-round w3-margin-bottom w3-button img-fluid" style="width:87px; height:51px; margin-top:10px;">
+    </div>
   </div>
 </div>
 
-
 <!-- Navigacioni bar za male ekrane -->
 <div id="navDemo" class="w3-bar-block w3-black w3-hide w3-hide-large w3-hide-medium w3-top" style="margin-top:46px">
-    <a href="index.html" class="w3-bar-item w3-button" onclick="MeniZaMaliEkran()">Pocetna</a>
-    <a href="umetnine.html" class="w3-bar-item w3-button" onclick="MeniZaMaliEkran()">Umetnine</a>
-    <a href="umetnici.html" class="w3-bar-item w3-button" onclick="MeniZaMaliEkran()">Umetnici</a>
-    <a href="moj_nalog.html" class="w3-bar-item w3-button" onclick="MeniZaMaliEkran()">Moj nalog</a>
-    <a href="o_nama.html" class="w3-bar-item w3-button" onclick="MeniZaMaliEkran()">O nama</a>
+    <a href="index.html" class="w3-bar-item w3-button" onclick="MeniZaMaliEkran()" id="mmeni1">Pocetna</a>
+    <a href="umetnine.html" class="w3-bar-item w3-button" onclick="MeniZaMaliEkran()" id="mmeni2">Umetnine</a>
+    <a href="umetnici.html" class="w3-bar-item w3-button" onclick="MeniZaMaliEkran()" id="mmeni3">Umetnici</a>
+    <a href="moj_nalog.html" class="w3-bar-item w3-button" onclick="MeniZaMaliEkran()" id="mmeni4">Moj nalog</a>
+    <a href="o_nama.html" class="w3-bar-item w3-button" onclick="MeniZaMaliEkran()" id="mmeni5">O nama</a>
+    <img id="srpski" src="slike/zastavaSrbije.jpg" class="w3-round w3-margin-bottom w3-button img-fluid" style="width:87px; height:51px; margin-top:10px;">
+    <img id="engleski" src="slike/zastavaEngleske.png" class="w3-round w3-margin-bottom w3-button img-fluid" style="width:87px; height:51px; margin-top:10px;">
 </div>
 
 <div class="w3-content" style="max-width:2000px;margin-top:40px">
 
     <div class="w3-container w3-content w3-center w3-padding-64" style="max-width:1100px">
-        <div style="font-weight: bold; font-size:x-large;">O nama</div>
+        <div style="font-weight: bold; font-size:x-large;" id="naslov">O nama</div>
         <div class="w3-row w3-padding-32">
             <div class="w3-third">
                 <img src="slike/galerija_slika1.jpg" alt="nista"  style="width:100%; height: 300px; border: 7px solid;">
@@ -70,24 +74,9 @@ body {font-family: "Lato", sans-serif}
                 <img src="slike/galerija_slika4.jpg" alt="nista" style="width:100%; height: 300px; border: 7px solid; margin-left: 6px;">
             </div>
         </div>
-        <div class="w3-row w3-large" style="font-weight: bold; padding: 20px;">
-            U nasoj galeriji se ponosno predstavlja raznovrsnost umetničkih dela. 
-            Bez obzira na preferencije posetilaca, nasa galerija pruža širok spektar umetnosti koja zadovoljava različite ukuse i interese. 
-            Naša stalna izložba obuhvata različite stilove, epohe i tehnike umetnosti, pružajući bogato iskustvo posetiocima.
-            U galeriji koju vodimo, posvećujemo pažnju visokom kvalitetu umetničkih dela. 
-            Naš tim stručnjaka pažljivo bira i procenjuje svako izloženo umetničko delo.
-            Galerija koju vodimo aktivno sarađuje sa umetnicima iz različitih delova sveta.
-            Organizujemo izložbe i rezidencijalne programe koji omogućavaju umetnicima da stvaraju i izlažu svoja dela u našem prostoru. 
-            Ova saradnja pruža jedinstvene perspektive i sveže ideje koje obogaćuju našu kolekciju i iskustvo posetilaca.
-        </div>
-        <div class="w3-row w3-padding-32 w3-large" style="font-weight: bold;">
-            Naš web sajt je sa ponosom osvojio prestižne nagrade CSS Design Awards i D&AD Awards, što je priznanje za izuzetnost u dizajnu i kreativnosti.
-            Ovi uspesi u osvajanju nagrada potvrđuju našu stručnost, kreativnost i predanost u dizajnu web sajtova. 
-            Timski rad, istraživanje i konstantno usavršavanje omogućili su nam da se izdvojimo među konkurencijom. 
-            Osvojene nagrade su inspiracija za dalji napredak i podsticaj za kreiranje još boljih digitalnih iskustava za naše posetioce. 
-            Nastavićemo da težimo izvrsnosti u dizajnu i nastavljamo da stvaramo inovativne i inspirativne web sajtove.
-        </div>
-        <div class="w3-row" style="font-weight: bold; padding: auto;">Kontakt telefon : 011/123-456 &emsp;&emsp;&emsp; nasa adresa : Durmitorska 19</div>
+        <div id="tekst1" class="w3-row w3-large" style="font-weight: bold; padding: 20px;"> </div>
+        <div id="tekst2" class="w3-row w3-padding-32 w3-large" style="font-weight: bold;"> </div>
+        <div id="tekst3" class="w3-row" style="font-weight: bold; padding: auto;"></div>
 
         <div class="w3-row w3-large">
             <div class="google-map">
@@ -98,8 +87,7 @@ body {font-family: "Lato", sans-serif}
     </div>
 </div>
 
-
-<footer class="w3-container w3-padding-10 w3-center w3-black w3-large" style="padding: 5px;">
+<footer id="footterr" class="w3-container w3-padding-10 w3-center w3-black w3-large" style="padding: 5px;">
     Copyright 2023, Aleksa Veljkovic 2020/0562, Marko Rabat 2020/0196, Odsek za softversko inzenjerstvo Elektrotehnickog fakulteta Univerziteta u Beogradu
 </footer>
 
