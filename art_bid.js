@@ -45,8 +45,8 @@ $("#ponude").click(function() {
             <form>
             <div class="form-group">
                 <label for="ponuda">Ponuda:</label>
-                <input type="number" class="form-control" id="Vrednost ponude" value="0" placeholder="0" style="text-align:center;">
-                <br/> <label id="submitButton" class="btn btn-danger">Dodaj ponudu</button>
+                <input type="number" class="form-control" id="ponuda" value="0" placeholder="0" style="text-align:center;">
+                <br/> <label id="submitButton1" class="btn btn-danger">Dodaj ponudu</button>
                 <br/>
             </div>
             </form>
@@ -61,7 +61,7 @@ $("#ponude").click(function() {
             <div class="form-group">
                 <label for="ponuda">Bid value:</label>
                 <input type="number" class="form-control" id="ponuda" value="0" placeholder="0" style="text-align:center;">
-                <br/> <label id="submitButton" class="btn btn-danger">Add bid</button>
+                <br/> <label id="submitButton1" class="btn btn-danger">Add bid</button>
                 <br/>
             </div>
             </form>
@@ -71,8 +71,9 @@ $("#ponude").click(function() {
             `;
         }
 
-        $("#submitButton").click(function() {
+        $("#submitButton1").click(function() {
             let number = $("#ponuda").val();
+            console.log(number);
             let novaPonuda = new Ponuda(umetnina, number, "korisnik1");
             if (sessionStorage.getItem("mojePonude") == null)
                 sessionStorage.setItem("mojePonude", JSON.stringify([]));
@@ -153,6 +154,7 @@ $("#komentari").click(function() {
                 tekuciKomentar.dodajKomentarNaId("prikazKom" + (ponudeCounter % 3 + 1) , lang); ++ponudeCounter;
             }
         }
+
     }
 
 });

@@ -24,15 +24,14 @@ function prikaziMojNalogStranice(lang) {
                           "Copyright 2023, Aleksa Veljkovic 2020/0562, Marko Rabat 2020/0196, Department of Software School of Electrical Engineering University of Belgrade");
     $("#footterr")[0].innerHTML = futer.dohvTekst(lang);
 
-    // sadrzaj stranice:
-    //$("#div1")[0].innerHTML = ""; ponuda1.dodajPonuduNaId("div1", lang);
-    //$("#div2")[0].innerHTML = ""; ponuda2.dodajPonuduNaId("div2", lang);
-    //$("#div3")[0].innerHTML = ""; ponuda3.dodajPonuduNaId("div3", lang);
-    //$("#div4")[0].innerHTML = ""; ponuda4.dodajPonuduNaId("div4", lang);
     $("#div1")[0].innerHTML = "";
     $("#div2")[0].innerHTML = "";
     $("#div3")[0].innerHTML = "";
     $("#div4")[0].innerHTML = "";
+    $("#komdiv1")[0].innerHTML = "";
+    $("#komdiv2")[0].innerHTML = "";
+    $("#komdiv3")[0].innerHTML = "";
+    $("#komdiv4")[0].innerHTML = "";
 
     if (sessionStorage.getItem("mojePonude") == null)
         sessionStorage.setItem("mojePonude", JSON.stringify([]));
