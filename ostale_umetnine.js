@@ -17,6 +17,8 @@ var NizUmetnina = [umetnina1, umetnina2, umetnina3];
 if (sessionStorage.getItem("lang") == null)
     sessionStorage.setItem("lang", "srp");
 let lang = sessionStorage.getItem("lang");
+if (lang == "srp") $("#dugmePretraga")[0].innerHTML="pretraga";
+else $("#dugmePretraga")[0].innerHTML="search";
 
 function sortirajA_Z(){
     for (let a = 0; a < NizUmetnina.length; a++) {
@@ -100,8 +102,8 @@ function prikaziOstaleUmetnineStranicu(lang) {
 }
 
 prikaziOstaleUmetnineStranicu(lang);
-$("#srpski").click(function() { lang = "srp"; sessionStorage.setItem("lang", lang); prikaziOstaleUmetnineStranicu(lang); });
-$("#engleski").click(function() { lang = "eng"; sessionStorage.setItem("lang", lang); prikaziOstaleUmetnineStranicu(lang); });
+$("#srpski").click(function() { lang = "srp"; $("#dugmePretraga")[0].innerHTML="pretraga"; sessionStorage.setItem("lang", lang); prikaziOstaleUmetnineStranicu(lang); });
+$("#engleski").click(function() { lang = "eng"; $("#dugmePretraga")[0].innerHTML="search"; sessionStorage.setItem("lang", lang); prikaziOstaleUmetnineStranicu(lang); });
 $("#dugme1").click(function() { sortirajA_Z(); prikaziOstaleUmetnineStranicu(lang); });
 $("#dugme2").click(function() { sortirajZ_A(); prikaziOstaleUmetnineStranicu(lang); });
 $("#dugme3").click(function() { sortiraj_Umetnik_A_Z(); prikaziOstaleUmetnineStranicu(lang); });
