@@ -211,6 +211,21 @@ class Ponuda {
     }
 }
 
+class Komentar {
+    constructor(naslov, tekst, autor, nazivUmetnine) {
+        this.naslov = naslov;
+        this.tekst = tekst;
+        this.autor = autor;
+        this.nazivUmetnine = nazivUmetnine;
+    }
+    dodajKomentarNaId(forid) {
+        $("#" + forid)[0].innerHTML += `
+            <h3>${this.naslov}</h3>
+            <p>${this.tekst}</p>
+        `
+    }
+}
+
 
 function MeniZaMaliEkran() {
     var x = document.getElementById("navDemo");
