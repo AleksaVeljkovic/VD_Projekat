@@ -32,7 +32,8 @@ class Umetnik {
                             <div class="card-body">
                                 <h5 class="card-title">${this.ime} ${this.prezime}</h5>
                                 <p class="card-text">Biography: ${this.biografija.tekstEngleski}
-                                <!--<a href="#" class="btn btn-primary">Go somewhere</a>-->
+                                <br/><br/>
+                                <a href="Biografija i spisak dela.pdf" class="btn btn-primary">Works</a>
                             </div>
                         </div>
                     </div>
@@ -51,7 +52,8 @@ class Umetnik {
                             <div class="card-body">
                                 <h5 class="card-title">${this.ime} ${this.prezime}</h5>
                                 <p class="card-text">Biografija: ${this.biografija.tekstSrpski}
-                                <!--<a href="#" class="btn btn-primary">Go somewhere</a>-->
+                                <br/><br/>
+                                <a href="Biografija i spisak dela.pdf" class="btn btn-primary">Dela</a>
                             </div>
                         </div>
                     </div>
