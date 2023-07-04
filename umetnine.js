@@ -127,6 +127,6 @@ $("#dugmePretraga").click(function() {
             window.location.href = 'art_bid.html'
         }
     }
-})
+});
 
 });

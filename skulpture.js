@@ -46,4 +46,13 @@ if (sessionStorage.getItem("lang") == null)
 let lang = sessionStorage.getItem("lang"); prikaziSkulptureStranicu(lang);
 $("#srpski").click(function() { lang = "srp"; sessionStorage.setItem("lang", lang); prikaziSkulptureStranicu(lang); });
 $("#engleski").click(function() { lang = "eng"; sessionStorage.setItem("lang", lang); prikaziSkulptureStranicu(lang); });
+$("#dugmePretraga").click(function() {
+    let pretraziNa = $("#pretragaInput").val();
+    for (let i = 0; i < NizUmetnina.length; ++i) {
+        if (NizUmetnina[i].nazivUmetnine.dohvTekst(lang).includes(pretraziNa)) {
+            sessionStorage.setItem('umetnina', JSON.stringify(NizUmetnina[i]));
+            window.location.href = 'art_bid.html'
+        }
+    }
+});
 });
