@@ -87,8 +87,15 @@ class Umetnina {
                 <div class="card" style="width: 700px; margin-left:70px; margin-bottom:50px">
                     <div class="row g-0">
                         <div class="col-md-4">
-                            <img src="${this.lokacijaSlikeUmetnine}" class="img-fluid w3-round"
+                            <div onclick="let umetnik = new Umetnik('${this.autor.ime}', '${this.autor.prezime}',
+                                new Tekst('${this.autor.biografija.tekstSrpski}', '${this.autor.biografija.tekstEngleski}'),
+                                '${this.autor.lokacijaSlikeUmetnika}', '${this.autor.lokacijaPdfa}');
+                            let umetnina = new Umetnina(new Tekst('${this.nazivUmetnine.tekstSrpski}', '${this.nazivUmetnine.tekstEngleski}'),
+                            umetnik, '${this.tipUmetnine}', '${this.vrednost}', '${this.starostUmetnine}', '${this.lokacijaSlikeUmetnine}');
+                            sessionStorage.setItem('umetnina', JSON.stringify(umetnina)); window.location.href = 'art_bid.html'">
+                            <img src="${this.lokacijaSlikeUmetnine}" class="card-img-top w3-round w3-margin-bottom"
                             style="width:100%; height: 300px; border: 7px solid;">
+                            </div>
                         </div>
                         <div class="col-md-8">
                             <div class="card-body">
@@ -108,8 +115,15 @@ class Umetnina {
                 <div class="card" style="width: 700px; margin-left:70px; margin-bottom:50px">
                     <div class="row g-0">
                         <div class="col-md-4">
-                            <img src="${this.lokacijaSlikeUmetnine}" class="img-fluid w3-round"
+                            <div onclick="let umetnik = new Umetnik('${this.autor.ime}', '${this.autor.prezime}',
+                                new Tekst('${this.autor.biografija.tekstSrpski}', '${this.autor.biografija.tekstEngleski}'),
+                                '${this.autor.lokacijaSlikeUmetnika}', '${this.autor.lokacijaPdfa}');
+                            let umetnina = new Umetnina(new Tekst('${this.nazivUmetnine.tekstSrpski}', '${this.nazivUmetnine.tekstEngleski}'),
+                            umetnik, '${this.tipUmetnine}', '${this.vrednost}', '${this.starostUmetnine}', '${this.lokacijaSlikeUmetnine}');
+                            sessionStorage.setItem('umetnina', JSON.stringify(umetnina)); window.location.href = 'art_bid.html'">
+                            <img src="${this.lokacijaSlikeUmetnine}" class="card-img-top w3-round w3-margin-bottom"
                             style="width:100%; height: 300px; border: 7px solid;">
+                            </div>
                         </div>
                         <div class="col-md-8">
                             <div class="card-body">
@@ -132,6 +146,9 @@ class Umetnina {
                this.tipUmetnine + " " + this.vrednost + " " +
                this.startosUmetnine + " " + this.lokacijaSlikeUmetnine;
     }
+    toSessionStorage() {
+        sessionStorage.setItem("umetnina", JSON.stringify(this));
+    }
 }
 
 class Ponuda {
@@ -146,9 +163,15 @@ class Ponuda {
         if (lang == "eng")
         htmlContent = `
             <div class="card">
+            <div onclick="let umetnik = new Umetnik('${this.umetnina.autor.ime}', '${this.umetnina.autor.prezime}',
+                new Tekst('${this.umetnina.autor.biografija.tekstSrpski}', '${this.umetnina.autor.biografija.tekstEngleski}'),
+                '${this.umetnina.autor.lokacijaSlikeUmetnika}', '${this.umetnina.autor.lokacijaPdfa}');
+            let umetnina = new Umetnina(new Tekst('${this.umetnina.nazivUmetnine.tekstSrpski}', '${this.umetnina.nazivUmetnine.tekstEngleski}'),
+            umetnik, '${this.umetnina.tipUmetnine}', '${this.umetnina.vrednost}', '${this.umetnina.starostUmetnine}', '${this.umetnina.lokacijaSlikeUmetnine}');
+            sessionStorage.setItem('umetnina', JSON.stringify(umetnina)); window.location.href = 'art_bid.html'">
             <img src="${this.umetnina.lokacijaSlikeUmetnine}" class="card-img-top w3-round w3-margin-bottom"
             style="width:100%; height: 300px; border: 7px solid;">
-
+            </div>
             <div class="card-body">
                 <h5 class="card-title">${this.umetnina.nazivUmetnine.tekstEngleski}</h5>
                 <p class="card-text">Bid: ${this.novcanaVrednostPonude}RSD<br/>Bid made by: ${this.autorPonude}</p>
@@ -160,9 +183,15 @@ class Ponuda {
         else if (lang == "srp")
         htmlContent = `
             <div class="card">
+            <div onclick="let umetnik = new Umetnik('${this.umetnina.autor.ime}', '${this.umetnina.autor.prezime}',
+                new Tekst('${this.umetnina.autor.biografija.tekstSrpski}', '${this.umetnina.autor.biografija.tekstEngleski}'),
+                '${this.umetnina.autor.lokacijaSlikeUmetnika}', '${this.umetnina.autor.lokacijaPdfa}');
+            let umetnina = new Umetnina(new Tekst('${this.umetnina.nazivUmetnine.tekstSrpski}', '${this.umetnina.nazivUmetnine.tekstEngleski}'),
+            umetnik, '${this.umetnina.tipUmetnine}', '${this.umetnina.vrednost}', '${this.umetnina.starostUmetnine}', '${this.umetnina.lokacijaSlikeUmetnine}');
+            sessionStorage.setItem('umetnina', JSON.stringify(umetnina)); window.location.href = 'art_bid.html'">
             <img src="${this.umetnina.lokacijaSlikeUmetnine}" class="card-img-top w3-round w3-margin-bottom"
             style="width:100%; height: 300px; border: 7px solid;">
-
+            </div>
             <div class="card-body">
                 <h5 class="card-title">${this.umetnina.nazivUmetnine.tekstSrpski}</h5>
                 <p class="card-text">Ponuda: ${this.novcanaVrednostPonude}RSD<br/>Ponudu postavio: ${this.autorPonude}</p>
