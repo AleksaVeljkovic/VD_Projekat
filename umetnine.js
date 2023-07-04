@@ -52,7 +52,7 @@ function prikaziUmetnineStranicu(lang) {
     umetnina7.dodajUmetninuNaId("div2", lang);
     umetnina8.dodajUmetninuNaId("div1", lang);
 
-    $("#naslov")[0].innerHTML = new Tekst("Umetnine", "Paintings").dohvTekst(lang);
+    $("#naslov")[0].innerHTML = new Tekst("Slike", "Paintings").dohvTekst(lang);
     $("#slike")[0].innerHTML = new Tekst("Slike", "Paintings").dohvTekst(lang);
     $("#skulpture")[0].innerHTML = new Tekst("Skulpture", "Skulptures").dohvTekst(lang);
     $("#ostale_umetnine")[0].innerHTML = new Tekst("Ostale umetnine", "Other art").dohvTekst(lang);
