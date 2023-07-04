@@ -12,7 +12,8 @@ function prikaziStranicu(lang) {
     let futer = new Tekst("Autorska prava zadrzavaju 2023, Aleksa Veljkovic 2020/0562, Marko Rabat 2020/0196, Odsek za softversko inzenjerstvo Elektrotehnickog fakulteta Univerziteta u Beogradu",
                           "Copyright 2023, Aleksa Veljkovic 2020/0562, Marko Rabat 2020/0196, Department of Software School of Electrical Engineering University of Belgrade");
     $("#footterr")[0].innerHTML = futer.dohvTekst(lang);
-    umetnina.dodajUmetninuNaId("centerImage", lang);
+    $("#centerImage")[0].innerHTML = ""; umetnina.dodajUmetninuNaId("centerImage", lang);
+    showing = null; $("#show_area")[0].innerHTML = "";
 }
 
 if (sessionStorage.getItem("lang") == null)
@@ -29,28 +30,44 @@ let autorData = umetninaData.autor;
 let umetnik = new Umetnik(autorData.ime, autorData.prezime, new Tekst(autorData.biografija.tekstSrpski, autorData.biografija.tekstEngleski), autorData.lokacijaSlikeUmetnika, autorData.lokacijaPdfa);
 let umetnina = new Umetnina(new Tekst(umetninaData.nazivUmetnine.tekstSrpski, umetninaData.nazivUmetnine.tekstEngleski),
 umetnik, umetninaData.tipUmetnine, umetninaData.vrednost, umetninaData.starostUmetnine, umetninaData.lokacijaSlikeUmetnine);
+let showing = null;
 prikaziStranicu(lang);
 $("#srpski").click(function() { lang = "srp"; sessionStorage.setItem("lang", lang); prikaziStranicu(lang); });
 $("#engleski").click(function() { lang = "eng"; sessionStorage.setItem("lang", lang); prikaziStranicu(lang); });
-let showing = null;
 
 let ponudeCounter = 0;
 $("#ponude").click(function() {
     if (showing == "ponude") { $("#show_area")[0].innerHTML = ""; showing = null; }
     else {
         showing = "ponude";
-        $("#show_area")[0].innerHTML = `
-        <form>
-        <div class="form-group">
-            <label for="ponuda">Ponuda:</label>
-            <input type="number" class="form-control" id="ponuda" value="0" placeholder="0" style="text-align:center;">
-            <br/> <label id="submitButton" class="btn btn-danger">Dodaj ponudu</button>
-        </div>
-        </form>
-        <div id="prikazPonuda1" class="w3-third w3-center"> </div>
-        <div id="prikazPonuda2" class="w3-third w3-center"> </div>
-        <div id="prikazPonuda3" class="w3-third w3-center"> </div>
-        `;
+        if (lang == "srp") {
+            $("#show_area")[0].innerHTML = `
+            <form>
+            <div class="form-group">
+                <label for="ponuda">Ponuda:</label>
+                <input type="number" class="form-control" id="Vrednost ponude" value="0" placeholder="0" style="text-align:center;">
+                <br/> <label id="submitButton" class="btn btn-danger">Dodaj ponudu</button>
+            </div>
+            </form>
+            <div id="prikazPonuda1" class="w3-third w3-center"> </div>
+            <div id="prikazPonuda2" class="w3-third w3-center"> </div>
+            <div id="prikazPonuda3" class="w3-third w3-center"> </div>
+            `;
+        }
+        else {
+            $("#show_area")[0].innerHTML = `
+            <form>
+            <div class="form-group">
+                <label for="ponuda">Bid value:</label>
+                <input type="number" class="form-control" id="ponuda" value="0" placeholder="0" style="text-align:center;">
+                <br/> <label id="submitButton" class="btn btn-danger">Add bid</button>
+            </div>
+            </form>
+            <div id="prikazPonuda1" class="w3-third w3-center"> </div>
+            <div id="prikazPonuda2" class="w3-third w3-center"> </div>
+            <div id="prikazPonuda3" class="w3-third w3-center"> </div>
+            `;
+        }
 
         $("#submitButton").click(function() {
             let number = $("#ponuda").val();
@@ -69,7 +86,7 @@ $("#ponude").click(function() {
             let ponudaData = nizPonuda[i];
             if (ponudaData.umetnina.nazivUmetnine.tekstSrpski == umetnina.nazivUmetnine.tekstSrpski) {
                 let tekucaPonuda = new Ponuda(umetnina, ponudaData.novcanaVrednostPonude, ponudaData.autorPonude);
-                tekucaPonuda.dodajPonuduNaId("prikazPonuda" + (ponudeCounter % 3 + 1) , "srp"); ++ponudeCounter;
+                tekucaPonuda.dodajPonuduNaId("prikazPonuda" + (ponudeCounter % 3 + 1) , lang); ++ponudeCounter;
             }
         }
     }
@@ -78,7 +95,12 @@ $("#komentari").click(function() {
     if (showing == "komentari") { $("#show_area")[0].innerHTML = ""; showing = null; }
     else {
         showing = "komentari";
-        $("#show_area")[0].innerHTML = "KOMENTARI";
+        if (lang == "srp") {
+            $("#show_area")[0].innerHTML = "KOMENTARI";
+        }
+        else {
+            $("#show_area")[0].innerHTML = "COMMENTS";
+        }
     }
 
 });
