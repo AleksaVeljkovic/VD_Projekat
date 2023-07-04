@@ -12,6 +12,61 @@ let umetnina1 = new Umetnina(new Tekst("Vaza", "The Vase"), umetnik4, "skulptura
 let umetnina2 = new Umetnina(new Tekst("Grcka vaza", "The Greek Vase"), umetnik5, "skulptura" , 2000, 20, "slike/ostale_um2.jpg");
 let umetnina3 = new Umetnina(new Tekst("San neolitske noći", "The dream of neolit night"), umetnik6, "skulptura", 3000, 30, "slike/ostale_um3.jpg");
 
+var NizUmetnina = [umetnina1, umetnina2, umetnina3];
+
+if (sessionStorage.getItem("lang") == null)
+    sessionStorage.setItem("lang", "srp");
+let lang = sessionStorage.getItem("lang");
+
+function sortirajA_Z(){
+    for (let a = 0; a < NizUmetnina.length; a++) {
+        for (let b = a + 1; b < NizUmetnina.length; b++) {
+            if (NizUmetnina[a].nazivUmetnine.dohvTekst(lang) > NizUmetnina[b].nazivUmetnine.dohvTekst(lang)) {
+            let tempString = NizUmetnina[a];
+            NizUmetnina[a] = NizUmetnina[b];
+            NizUmetnina[b] = tempString;
+           }
+        }
+     }
+}
+
+function sortirajZ_A(){
+    for (let a = 0; a < NizUmetnina.length; a++) {
+        for (let b = a + 1; b < NizUmetnina.length; b++) {
+            if (NizUmetnina[a].nazivUmetnine.dohvTekst(lang) < NizUmetnina[b].nazivUmetnine.dohvTekst(lang)) {
+            let tempString = NizUmetnina[a];
+            NizUmetnina[a] = NizUmetnina[b];
+            NizUmetnina[b] = tempString;
+           }
+        }
+     }
+}
+
+function sortiraj_Umetnik_A_Z(){
+    for (let a = 0; a < NizUmetnina.length; a++) {
+        for (let b = a + 1; b < NizUmetnina.length; b++) {
+            if (NizUmetnina[a].autor.ime > NizUmetnina[b].autor.ime) {
+            let tempString = NizUmetnina[a];
+            NizUmetnina[a] = NizUmetnina[b];
+            NizUmetnina[b] = tempString;
+           }
+        }
+     }
+}
+
+function sortiraj_Umetnik_Z_A(){
+    for (let a = 0; a < NizUmetnina.length; a++) {
+        for (let b = a + 1; b < NizUmetnina.length; b++) {
+            if (NizUmetnina[a].autor.ime < NizUmetnina[b].autor.ime) {
+            let tempString = NizUmetnina[a];
+            NizUmetnina[a] = NizUmetnina[b];
+            NizUmetnina[b] = tempString;
+           }
+        }
+     }
+}
+
+
 
 function prikaziOstaleUmetnineStranicu(lang) {
     let tekstMenija = [
@@ -26,19 +81,38 @@ function prikaziOstaleUmetnineStranicu(lang) {
                           "Copyright 2023, Aleksa Veljkovic 2020/0562, Marko Rabat 2020/0196, Department of Software School of Electrical Engineering University of Belgrade");
     $("#footterr")[0].innerHTML = futer.dohvTekst(lang);
     $("#div1")[0].innerHTML = ""; $("#div2")[0].innerHTML = "";
-    umetnina1.dodajUmetninuNaId("div1", lang);
-    umetnina2.dodajUmetninuNaId("div1", lang);
-    umetnina3.dodajUmetninuNaId("div2", lang);
 
+    for(var i = 0; i < NizUmetnina.length; i++){
+        if(i % 2 == 0){
+            NizUmetnina[i].dodajUmetninuNaId("div1", lang);
+        }
+        else{
+            NizUmetnina[i].dodajUmetninuNaId("div2", lang);
+        }
+    }
     $("#naslov")[0].innerHTML = new Tekst("Ostale umetnine", "Other art").dohvTekst(lang);
     $("#slike")[0].innerHTML = new Tekst("Slike", "Paintings").dohvTekst(lang);
     $("#skulpture")[0].innerHTML = new Tekst("Skulpture", "Skulptures").dohvTekst(lang);
     $("#ostale_umetnine")[0].innerHTML = new Tekst("Ostale umetnine", "Other art").dohvTekst(lang);
+    //$("#dugme3")[0].innerHTML = new Tekst("Umetniku(A - Z)", "Artists(A - Z)").dohvTekst(lang);
+    //$("#dugme4")[0].innerHTML = new Tekst("Umetniku(Z - A)", "Artists(Z - A)").dohvTekst(lang);
+    $("#sort")[0].innerHTML = new Tekst("Sortiraj po:", "Sort by:").dohvTekst(lang);
 }
 
-if (sessionStorage.getItem("lang") == null)
-    sessionStorage.setItem("lang", "srp");
-let lang = sessionStorage.getItem("lang"); prikaziOstaleUmetnineStranicu(lang);
+prikaziOstaleUmetnineStranicu(lang);
 $("#srpski").click(function() { lang = "srp"; sessionStorage.setItem("lang", lang); prikaziOstaleUmetnineStranicu(lang); });
 $("#engleski").click(function() { lang = "eng"; sessionStorage.setItem("lang", lang); prikaziOstaleUmetnineStranicu(lang); });
+$("#dugme1").click(function() { sortirajA_Z(); prikaziOstaleUmetnineStranicu(lang); });
+$("#dugme2").click(function() { sortirajZ_A(); prikaziOstaleUmetnineStranicu(lang); });
+$("#dugme3").click(function() { sortiraj_Umetnik_A_Z(); prikaziOstaleUmetnineStranicu(lang); });
+$("#dugme4").click(function() { sortiraj_Umetnik_Z_A(); prikaziOstaleUmetnineStranicu(lang); });
+$("#dugmePretraga").click(function() {
+    let pretraziNa = $("#pretragaInput").val();
+    for (let i = 0; i < NizUmetnina.length; ++i) {
+        if (NizUmetnina[i].nazivUmetnine.dohvTekst(lang).includes(pretraziNa)) {
+            sessionStorage.setItem('umetnina', JSON.stringify(NizUmetnina[i]));
+            window.location.href = 'art_bid.html'
+        }
+    }
+});
 });
