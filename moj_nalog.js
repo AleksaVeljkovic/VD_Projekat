@@ -53,6 +53,19 @@ function prikaziMojNalogStranice(lang) {
         }
     }
 
+
+    if (sessionStorage.getItem("mojiKomentari") == null)
+        sessionStorage.setItem("mojiKomentari", JSON.stringify([]));
+    let nizKomentara = JSON.parse(sessionStorage.getItem("mojiKomentari"));
+    if (nizKomentara == null) return;
+    for (let i = 0; i < nizKomentara.length; ++i) {
+        let tekuciData = nizKomentara[i];
+        let tekuciKomentar = new Komentar(tekuciData.naslov, tekuciData.tekst, tekuciData.autor, tekuciData.nazivUmetnine);
+        if (tekuciKomentar.autor == "korisnik1") {
+            tekuciKomentar.dodajKomentarNaId("komdiv" + (ponudeCounter % 3 + 1) , lang); ++ponudeCounter;
+        }
+    }
+
     
     $("#tekstVasePonude")[0].innerHTML = new Tekst("Vase ponude", "Your bids").dohvTekst(lang);
 }

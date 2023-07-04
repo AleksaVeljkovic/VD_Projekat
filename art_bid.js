@@ -47,6 +47,7 @@ $("#ponude").click(function() {
                 <label for="ponuda">Ponuda:</label>
                 <input type="number" class="form-control" id="Vrednost ponude" value="0" placeholder="0" style="text-align:center;">
                 <br/> <label id="submitButton" class="btn btn-danger">Dodaj ponudu</button>
+                <br/>
             </div>
             </form>
             <div id="prikazPonuda1" class="w3-third w3-center"> </div>
@@ -61,6 +62,7 @@ $("#ponude").click(function() {
                 <label for="ponuda">Bid value:</label>
                 <input type="number" class="form-control" id="ponuda" value="0" placeholder="0" style="text-align:center;">
                 <br/> <label id="submitButton" class="btn btn-danger">Add bid</button>
+                <br/>
             </div>
             </form>
             <div id="prikazPonuda1" class="w3-third w3-center"> </div>
@@ -96,10 +98,60 @@ $("#komentari").click(function() {
     else {
         showing = "komentari";
         if (lang == "srp") {
-            $("#show_area")[0].innerHTML = "KOMENTARI";
+            $("#show_area")[0].innerHTML = `
+            <form>
+            <div class="form-group">
+                <label>Naslov komentara:</label>
+                <input type="text" class="form-control" id="naslovKom" required style="text-align:center;">
+                <label>Tekst komentara</label>
+                <textarea class="form-control" id="tekstKom" rows="3"></textarea>
+                <br/> <label id="submitButton" class="btn btn-dark">Dodaj komentar</button>
+                <br/>
+            </div>
+            </form>
+            <div id="prikazKom1" class="w3-third w3-center"> </div>
+            <div id="prikazKom2" class="w3-third w3-center"> </div>
+            <div id="prikazKom3" class="w3-third w3-center"> </div>
+            `;
         }
         else {
-            $("#show_area")[0].innerHTML = "COMMENTS";
+            $("#show_area")[0].innerHTML = `
+            <form>
+            <div class="form-group">
+                <label>Comment title:</label>
+                <input type="text" class="form-control" id="naslovKom" required style="text-align:center;">
+                <label>Comment text:</label>
+                <textarea class="form-control" id="tekstKom" rows="3"></textarea>
+                <br/> <label id="submitButton" class="btn btn-dark">Add comment</button>
+                <br/>
+            </div>
+            </form>
+            <div id="prikazKom1" class="w3-third w3-center"> </div>
+            <div id="prikazKom2" class="w3-third w3-center"> </div>
+            <div id="prikazKom3" class="w3-third w3-center"> </div>
+            `;
+        }
+
+        $("#submitButton").click(function() {
+            let title = $("#naslovKom").val();
+            let tekst = $("#tekstKom").val();
+            let novKom = new Komentar(title, tekst, "korisnik1", umetnina.nazivUmetnine.tekstSrpski);
+            if (sessionStorage.getItem("mojiKomentari") == null)
+                sessionStorage.setItem("mojiKomentari", JSON.stringify([]));
+            let nizKomentara = JSON.parse(sessionStorage.getItem("mojiKomentari"));
+            nizKomentara.push(novKom);
+            sessionStorage.setItem("mojiKomentari", JSON.stringify(nizKomentara))
+            showing = null; $("#show_area")[0].innerHTML = "";
+        });
+
+        let nizKomentara = JSON.parse(sessionStorage.getItem("mojiKomentari"));
+        if (nizKomentara == null) return;
+        for (let i = 0; i < nizKomentara.length; ++i) {
+            let tekuciData = nizKomentara[i];
+            let tekuciKomentar = new Komentar(tekuciData.naslov, tekuciData.tekst, tekuciData.autor, tekuciData.nazivUmetnine);
+            if (tekuciKomentar.nazivUmetnine == umetnina.nazivUmetnine.tekstSrpski) {
+                tekuciKomentar.dodajKomentarNaId("prikazKom" + (ponudeCounter % 3 + 1) , lang); ++ponudeCounter;
+            }
         }
     }
 
