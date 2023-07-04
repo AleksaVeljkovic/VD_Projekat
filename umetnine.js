@@ -25,8 +25,59 @@ let umetnina7 = new Umetnina(new Tekst("Zvezdana noć", "The Starry Night"), ume
 let umetnina8 = new Umetnina(new Tekst("Pšenično polje sa čempresima", "Wheat Field with Cypresses"), umetnik3, "slika", 2000, 150, "slike/slika5.jpg");
 
 
+var NizUmetnina = [umetnina1, umetnina2, umetnina3, umetnina4, umetnina5, umetnina6, umetnina7, umetnina8];
 
+if (sessionStorage.getItem("lang") == null)
+    sessionStorage.setItem("lang", "srp");
+let lang = sessionStorage.getItem("lang");
 
+function sortirajA_Z(){
+    for (let a = 0; a < NizUmetnina.length; a++) {
+        for (let b = a + 1; b < NizUmetnina.length; b++) {
+            if (NizUmetnina[a].nazivUmetnine.dohvTekst(lang) > NizUmetnina[b].nazivUmetnine.dohvTekst(lang)) {
+            let tempString = NizUmetnina[a];
+            NizUmetnina[a] = NizUmetnina[b];
+            NizUmetnina[b] = tempString;
+           }
+        }
+     }
+}
+
+function sortirajZ_A(){
+    for (let a = 0; a < NizUmetnina.length; a++) {
+        for (let b = a + 1; b < NizUmetnina.length; b++) {
+            if (NizUmetnina[a].nazivUmetnine.dohvTekst(lang) < NizUmetnina[b].nazivUmetnine.dohvTekst(lang)) {
+            let tempString = NizUmetnina[a];
+            NizUmetnina[a] = NizUmetnina[b];
+            NizUmetnina[b] = tempString;
+           }
+        }
+     }
+}
+
+function sortiraj_Umetnik_A_Z(){
+    for (let a = 0; a < NizUmetnina.length; a++) {
+        for (let b = a + 1; b < NizUmetnina.length; b++) {
+            if (NizUmetnina[a].autor.ime > NizUmetnina[b].autor.ime) {
+            let tempString = NizUmetnina[a];
+            NizUmetnina[a] = NizUmetnina[b];
+            NizUmetnina[b] = tempString;
+           }
+        }
+     }
+}
+
+function sortiraj_Umetnik_Z_A(){
+    for (let a = 0; a < NizUmetnina.length; a++) {
+        for (let b = a + 1; b < NizUmetnina.length; b++) {
+            if (NizUmetnina[a].autor.ime < NizUmetnina[b].autor.ime) {
+            let tempString = NizUmetnina[a];
+            NizUmetnina[a] = NizUmetnina[b];
+            NizUmetnina[b] = tempString;
+           }
+        }
+     }
+}
 
 function prikaziUmetnineStranicu(lang) {
     let tekstMenija = [
@@ -42,26 +93,31 @@ function prikaziUmetnineStranicu(lang) {
     $("#footterr")[0].innerHTML = futer.dohvTekst(lang);
     $("#div1")[0].innerHTML = ""; $("#div2")[0].innerHTML = "";
 
-
-    umetnina1.dodajUmetninuNaId("div1", lang);
-    umetnina2.dodajUmetninuNaId("div1", lang);
-    umetnina3.dodajUmetninuNaId("div2", lang);
-    umetnina4.dodajUmetninuNaId("div2", lang);
-    umetnina5.dodajUmetninuNaId("div2", lang);
-    umetnina6.dodajUmetninuNaId("div1", lang);
-    umetnina7.dodajUmetninuNaId("div2", lang);
-    umetnina8.dodajUmetninuNaId("div1", lang);
+    for(var i = 0; i < NizUmetnina.length; i++){
+        if(i % 2 == 0){
+            NizUmetnina[i].dodajUmetninuNaId("div1", lang);
+        }
+        else{
+            NizUmetnina[i].dodajUmetninuNaId("div2", lang);
+        }
+    }
 
     $("#naslov")[0].innerHTML = new Tekst("Slike", "Paintings").dohvTekst(lang);
     $("#slike")[0].innerHTML = new Tekst("Slike", "Paintings").dohvTekst(lang);
     $("#skulpture")[0].innerHTML = new Tekst("Skulpture", "Skulptures").dohvTekst(lang);
     $("#ostale_umetnine")[0].innerHTML = new Tekst("Ostale umetnine", "Other art").dohvTekst(lang);
+    //$("#dugme3")[0].innerHTML = new Tekst("Umetniku(A - Z)", "Artists(A - Z)").dohvTekst(lang);
+    //$("#dugme4")[0].innerHTML = new Tekst("Umetniku(Z - A)", "Artists(Z - A)").dohvTekst(lang);
+    $("#sort")[0].innerHTML = new Tekst("Sortiraj po:", "Sort by:").dohvTekst(lang);
 }
 
-if (sessionStorage.getItem("lang") == null)
-    sessionStorage.setItem("lang", "srp");
-let lang = sessionStorage.getItem("lang"); prikaziUmetnineStranicu(lang);
+prikaziUmetnineStranicu(lang);
+
 $("#srpski").click(function() { lang = "srp"; sessionStorage.setItem("lang", lang); prikaziUmetnineStranicu(lang); });
 $("#engleski").click(function() { lang = "eng"; sessionStorage.setItem("lang", lang); prikaziUmetnineStranicu(lang); });
+$("#dugme1").click(function() { sortirajA_Z(); prikaziUmetnineStranicu(lang); });
+$("#dugme2").click(function() { sortirajZ_A(); prikaziUmetnineStranicu(lang); });
+$("#dugme3").click(function() { sortiraj_Umetnik_A_Z(); prikaziUmetnineStranicu(lang); });
+$("#dugme4").click(function() { sortiraj_Umetnik_Z_A(); prikaziUmetnineStranicu(lang); });
 
 });
