@@ -33,7 +33,7 @@ class Umetnik {
                                 <h5 class="card-title">${this.ime} ${this.prezime}</h5>
                                 <p class="card-text">Biography: ${this.biografija.tekstEngleski}
                                 <br/><br/>
-                                <a href="Biografija i spisak dela.pdf" class="btn btn-primary">Works</a>
+                                <a href="Biografija i spisak dela.pdf" class="btn btn-dark">Works</a>
                             </div>
                         </div>
                     </div>
@@ -53,7 +53,7 @@ class Umetnik {
                                 <h5 class="card-title">${this.ime} ${this.prezime}</h5>
                                 <p class="card-text">Biografija: ${this.biografija.tekstSrpski}
                                 <br/><br/>
-                                <a href="Biografija i spisak dela.pdf" class="btn btn-primary">Dela</a>
+                                <a href="Biografija i spisak dela.pdf" class="btn btn-dark">Dela</a>
                             </div>
                         </div>
                     </div>

@@ -25,10 +25,35 @@ function prikaziMojNalogStranice(lang) {
     $("#footterr")[0].innerHTML = futer.dohvTekst(lang);
 
     // sadrzaj stranice:
-    $("#div1")[0].innerHTML = ""; ponuda1.dodajPonuduNaId("div1", lang);
-    $("#div2")[0].innerHTML = ""; ponuda2.dodajPonuduNaId("div2", lang);
-    $("#div3")[0].innerHTML = ""; ponuda3.dodajPonuduNaId("div3", lang);
-    $("#div4")[0].innerHTML = ""; ponuda4.dodajPonuduNaId("div4", lang);
+    //$("#div1")[0].innerHTML = ""; ponuda1.dodajPonuduNaId("div1", lang);
+    //$("#div2")[0].innerHTML = ""; ponuda2.dodajPonuduNaId("div2", lang);
+    //$("#div3")[0].innerHTML = ""; ponuda3.dodajPonuduNaId("div3", lang);
+    //$("#div4")[0].innerHTML = ""; ponuda4.dodajPonuduNaId("div4", lang);
+    $("#div1")[0].innerHTML = "";
+    $("#div2")[0].innerHTML = "";
+    $("#div3")[0].innerHTML = "";
+    $("#div4")[0].innerHTML = "";
+
+    if (sessionStorage.getItem("mojePonude") == null)
+        sessionStorage.setItem("mojePonude", JSON.stringify([]));
+
+    ponudeCounter = 0
+    nizPonuda = JSON.parse(sessionStorage.getItem("mojePonude"));
+    if (nizPonuda == null) return;
+    for (let i = 0; i < nizPonuda.length; ++i) {
+        let ponudaData = nizPonuda[i];
+        if (ponudaData.autorPonude == "korisnik1") {
+            let umetninaData = ponudaData.umetnina;
+            let autorData = umetninaData.autor;
+            let umetnik = new Umetnik(autorData.ime, autorData.prezime, new Tekst(autorData.biografija.tekstSrpski, autorData.biografija.tekstEngleski), autorData.lokacijaSlikeUmetnika, autorData.lokacijaPdfa);
+            let umetnina = new Umetnina(new Tekst(umetninaData.nazivUmetnine.tekstSrpski, umetninaData.nazivUmetnine.tekstEngleski),
+            umetnik, umetninaData.tipUmetnine, umetninaData.vrednost, umetninaData.starostUmetnine, umetninaData.lokacijaSlikeUmetnine);
+            let tekucaPonuda = new Ponuda(umetnina, ponudaData.novcanaVrednostPonude, ponudaData.autorPonude);
+            tekucaPonuda.dodajPonuduNaId("div" + (ponudeCounter % 4 + 1) , lang); ++ponudeCounter;
+        }
+    }
+
+    
     $("#tekstVasePonude")[0].innerHTML = new Tekst("Vase ponude", "Your bids").dohvTekst(lang);
 }
 
